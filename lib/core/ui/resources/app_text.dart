@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_open_films/core/ui/resources/app_colors.dart';
+import 'package:films/core/ui/resources/app_colors.dart';
 
 import '../../../../gen/fonts.gen.dart';
 

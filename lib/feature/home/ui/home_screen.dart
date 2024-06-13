@@ -27,45 +27,41 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: BottomAppBar(
-            height: 70.0,
-            elevation: 0,
-            color: AppColors.black,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                _navBarItem(
-                    index: 0,
-                    onTap: widget.navigateToMain,
-                    context: context,
-                    icon: _currentPage == 0
-                        ? Assets.icons.home
-                        : Assets.icons.homeOutline),
-                _navBarItem(
-                    index: 1,
-                    onTap: widget.navigateToSearch,
-                    context: context,
-                    icon: _currentPage == 1
-                        ? Assets.icons.search
-                        : Assets.icons.searchOutline),
-                _navBarItem(
-                    index: 2,
-                    onTap: widget.navigateToBookmark,
-                    context: context,
-                    icon: _currentPage == 2
-                        ? Assets.icons.saved
-                        : Assets.icons.savedOutline),
-              ],
-            ),
+    return Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          height: 70.0,
+          elevation: 0,
+          color: AppColors.black,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              _navBarItem(
+                  index: 0,
+                  onTap: widget.navigateToMain,
+                  context: context,
+                  icon: _currentPage == 0
+                      ? Assets.icons.home
+                      : Assets.icons.homeOutline),
+              _navBarItem(
+                  index: 1,
+                  onTap: widget.navigateToSearch,
+                  context: context,
+                  icon: _currentPage == 1
+                      ? Assets.icons.search
+                      : Assets.icons.searchOutline),
+              _navBarItem(
+                  index: 2,
+                  onTap: widget.navigateToBookmark,
+                  context: context,
+                  icon: _currentPage == 2
+                      ? Assets.icons.saved
+                      : Assets.icons.savedOutline),
+            ],
           ),
-          body: widget.child),
-    );
+        ),
+        body: widget.child);
   }
 
   Widget _navBarItem({

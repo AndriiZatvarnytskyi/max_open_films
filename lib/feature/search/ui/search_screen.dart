@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_open_films/core/domain/models/film_model.dart';
+import 'package:films/core/domain/models/film_model.dart';
 
 import '../../../core/data/remote/api_services.dart';
 import '../../../core/ui/resources/app_text.dart';
@@ -17,61 +17,55 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: BlocProvider(
-        create: (context) => ListFilmCubit(
-          repository: FilmsRepository(
-            ApiService(),
-          ),
-        )..init(),
-        child: Scaffold(
-            body: PopScope(
-          canPop: false,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      top: 73,
-                      bottom: 20,
-                    ),
-                    child: CustomTitle(
-                      title: 'Search',
-                    ),
-                  ),
-                  BlocBuilder<ListFilmCubit, ListFilmState>(
-                      builder: (context, state) {
-                    return CustomSearchTextField(
-                        onChanged: context.read<ListFilmCubit>().search);
-                  }),
-                  BlocBuilder<ListFilmCubit, ListFilmState>(
-                    builder: (context, state) {
-                      if (state is ListFilmStateContent) {
-                        return _SearchScreenContent(
-                          state: state,
-                          navigateToFilm: navigateToFilm,
-                        );
-                      } else {
-                        return Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: MediaQuery.sizeOf(context).height * 0.3),
-                            child: const CircularProgressIndicator(),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ],
+    return BlocProvider(
+      create: (context) => ListFilmCubit(
+        repository: FilmsRepository(
+          ApiService(),
+        ),
+      )..init(),
+      child: Scaffold(
+          body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(
+                  top: 73,
+                  bottom: 20,
+                ),
+                child: CustomTitle(
+                  title: 'Search',
+                ),
               ),
-            ),
+              BlocBuilder<ListFilmCubit, ListFilmState>(
+                  builder: (context, state) {
+                return CustomSearchTextField(
+                    onChanged: context.read<ListFilmCubit>().search);
+              }),
+              BlocBuilder<ListFilmCubit, ListFilmState>(
+                builder: (context, state) {
+                  if (state is ListFilmStateContent) {
+                    return _SearchScreenContent(
+                      state: state,
+                      navigateToFilm: navigateToFilm,
+                    );
+                  } else {
+                    return Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.sizeOf(context).height * 0.3),
+                        child: const CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                },
+              ),
+            ],
           ),
-        )),
-      ),
+        ),
+      )),
     );
   }
 }

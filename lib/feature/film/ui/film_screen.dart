@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:max_open_films/core/ui/resources/app_colors.dart';
-import 'package:max_open_films/feature/film/presentation/film_cubit/film_cubit.dart';
+import 'package:films/core/ui/resources/app_colors.dart';
+import 'package:films/feature/film/presentation/film_cubit/film_cubit.dart';
 
 import '../../../core/data/remote/api_services.dart';
 import '../../../core/ui/resources/app_text.dart';

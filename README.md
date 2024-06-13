@@ -1,3 +1,3 @@
-# max_open_films
+# films
 
 A new Flutter project.

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:max_open_films/core/domain/entity/film.dart';
+import 'package:films/core/domain/entity/film.dart';
 
 FilmModel filmModelFromJson(String str) => FilmModel.fromJson(json.decode(str));
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:max_open_films/core/domain/models/film_model.dart';
-import 'package:max_open_films/core/ui/widgets/star_rate.dart';
+import 'package:films/core/domain/models/film_model.dart';
+import 'package:films/core/ui/widgets/star_rate.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../resources/app_colors.dart';

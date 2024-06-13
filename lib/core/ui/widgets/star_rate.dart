@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:max_open_films/gen/assets.gen.dart';
+import 'package:films/gen/assets.gen.dart';
 
 class StarRating extends StatelessWidget {
   const StarRating({

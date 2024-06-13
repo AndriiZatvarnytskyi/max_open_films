@@ -1,4 +1,4 @@
-import 'package:max_open_films/core/domain/entity/film.dart';
+import 'package:films/core/domain/entity/film.dart';
 
 import '../../../core/data/local/box_manager.dart';
 import '../../../core/data/remote/api_services.dart';

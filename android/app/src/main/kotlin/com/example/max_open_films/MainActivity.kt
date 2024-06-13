@@ -1,4 +1,4 @@
-package com.example.max_open_films
+package com.watchplus.movies.overview
 
 import io.flutter.embedding.android.FlutterActivity
 

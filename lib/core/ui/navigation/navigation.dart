@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:max_open_films/core/ui/utils/extensions.dart';
-import 'package:max_open_films/feature/film/ui/film_screen.dart';
-import 'package:max_open_films/feature/latest/ui/latest_screen.dart';
+import 'package:films/core/ui/utils/extensions.dart';
+import 'package:films/feature/film/ui/film_screen.dart';
+import 'package:films/feature/latest/ui/latest_screen.dart';
 
 import '../../../feature/home/ui/home_screen.dart';
 import '../../../feature/main/ui/main_screen.dart';

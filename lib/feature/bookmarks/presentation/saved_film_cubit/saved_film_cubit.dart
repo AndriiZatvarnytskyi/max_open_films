@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:max_open_films/core/domain/entity/film.dart';
+import 'package:films/core/domain/entity/film.dart';
 
 import '../../../search/data/films_repository.dart';
 

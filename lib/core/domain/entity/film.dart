@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:max_open_films/core/domain/models/film_model.dart';
+import 'package:films/core/domain/models/film_model.dart';
 
 part 'film.g.dart';
 

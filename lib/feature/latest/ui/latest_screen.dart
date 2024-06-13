@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:max_open_films/core/domain/models/film_model.dart';
-import 'package:max_open_films/core/ui/widgets/vertical_content_container.dart';
+import 'package:films/core/domain/models/film_model.dart';
+import 'package:films/core/ui/widgets/vertical_content_container.dart';
 
 import '../../../core/data/remote/api_services.dart';
 import '../../../core/ui/widgets/custom_title.dart';
@@ -59,67 +59,73 @@ class _LatestScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 73,
-                bottom: 20,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: navigateBack,
-                    child: SvgPicture.asset(
-                      Assets.icons.back,
-                      height: 24,
-                      width: 24,
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        navigateBack();
+      },
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 73,
+                  bottom: 20,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: navigateBack,
+                      child: SvgPicture.asset(
+                        Assets.icons.back,
+                        height: 24,
+                        width: 24,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 28,
-                  ),
-                  const CustomTitle(
-                    title: 'Latest',
-                  ),
-                ],
+                    const SizedBox(
+                      width: 28,
+                    ),
+                    const CustomTitle(
+                      title: 'Latest',
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            LayoutBuilder(
-              builder: (context, constraints) {
-                int crossAxisCount = (constraints.maxWidth / 175).floor();
+              const SizedBox(
+                height: 20,
+              ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  int crossAxisCount = (constraints.maxWidth / 175).floor();
 
-                return GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    mainAxisSpacing: 10.0,
-                    childAspectRatio: 175 / 359,
-                  ),
-                  itemCount: state.latestFilms.length,
-                  itemBuilder: (context, index) {
-                    final FilmModel film = state.latestFilms[index];
-                    return VerticalContentContainer(
-                      onSave: () =>
-                          context.read<ListFilmCubit>().saveLatest(film),
-                      film: film,
-                      navigateToFilm: navigateToFilm,
-                    );
-                  },
-                );
-              },
-            )
-          ],
+                  return GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      mainAxisSpacing: 10.0,
+                      childAspectRatio: 175 / 359,
+                    ),
+                    itemCount: state.latestFilms.length,
+                    itemBuilder: (context, index) {
+                      final FilmModel film = state.latestFilms[index];
+                      return VerticalContentContainer(
+                        onSave: () =>
+                            context.read<ListFilmCubit>().saveLatest(film),
+                        film: film,
+                        navigateToFilm: navigateToFilm,
+                      );
+                    },
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
